@@ -20,15 +20,7 @@ export default {
     filter:{
       type:String,
       required:true
-    },
-    troggleTabFilter:{
-      type:Function,
-      required:true
-    },
-    clearCompleted:{
-      type:Function,
-      required:true
-    },
+    },       
     leftItemsCount:{
       type:Number,
       required:true
@@ -41,10 +33,10 @@ export default {
   },
   methods:{
     clearAllCompleted(){
-      this.clearCompleted()
+      this.$emit('clearCompleted')
     },
     toggleFilter(state){
-      this.troggleTabFilter(state)
+      this.$emit('troggleTabFilter',state) //传参
     }
   }
 }

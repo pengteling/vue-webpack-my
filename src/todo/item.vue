@@ -17,15 +17,11 @@ export default {
     todo: {
       type: Object,
       required: true
-    },
-    deleteTodoItem:{
-      type:Function,
-      required:true
     }
   },
   methods: {
     deleteTodo() {
-      this.deleteTodoItem(this.todo)
+      this.$emit('deleteTodoItem')
     }
   }
 };

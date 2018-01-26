@@ -7,8 +7,18 @@
       @keyup.enter="addTodo"
     >
     <!-- <Item :todo="todo"></Item> -->
-    <Item :todo="todo" v-for="todo in todosView" :key="todo.id" :deleteTodoItem="deleteTodoItem"></Item>
-    <Tabs :filter="filter" :troggleTabFilter ="troggleTabFilter" :clearCompleted ="clearCompleted" :leftItemsCount = "leftItemsCount" ></Tabs>
+    <Item 
+      :todo="todo" 
+      v-for="todo in todosView" 
+      :key="todo.id" 
+      @deleteTodoItem="deleteTodoItem(todo)"
+    />
+    <Tabs 
+      :filter="filter" 
+      :leftItemsCount = "leftItemsCount"
+      @troggleTabFilter ="troggleTabFilter" 
+      @clearCompleted ="clearCompleted"  
+    />    
   </section>
 </template>
 
@@ -67,6 +77,7 @@ export default {
       this.todos = this.todos.filter(v => v !== todo);
     },
     troggleTabFilter(filter) {
+      console.log("troggleTabFilter")
       this.filter = filter;
     },
     clearCompleted(){
