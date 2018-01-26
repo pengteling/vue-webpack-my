@@ -9348,7 +9348,7 @@ exports.default = {
 /* 22 */
 /***/ (function(module, exports) {
 
-throw new Error("Module build failed: Error: \"extract-text-webpack-plugin\" loader is used without the corresponding plugin, refer to https://github.com/webpack/extract-text-webpack-plugin for the usage example\n    at Object.pitch (A:\\备课\\云盘\\303_VueJS\\vue-webpack-my\\node_modules\\extract-text-webpack-plugin\\dist\\loader.js:57:11)");
+// removed by extract-text-webpack-plugin
 
 /***/ }),
 /* 23 */
@@ -9592,7 +9592,7 @@ var esExports = { render: render, staticRenderFns: staticRenderFns }
 /* 36 */
 /***/ (function(module, exports) {
 
-throw new Error("Module build failed: Error: \"extract-text-webpack-plugin\" loader is used without the corresponding plugin, refer to https://github.com/webpack/extract-text-webpack-plugin for the usage example\n    at Object.pitch (A:\\备课\\云盘\\303_VueJS\\vue-webpack-my\\node_modules\\extract-text-webpack-plugin\\dist\\loader.js:57:11)");
+// removed by extract-text-webpack-plugin
 
 /***/ })
 /******/ ]);
