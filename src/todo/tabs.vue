@@ -1,6 +1,6 @@
 <template>
   <div class="helper">
-    <span class="left">2 items left</span>
+    <span class="left">{{leftItemsCount}} items left</span>
     <span class="tabs">
       <span
         v-for="state in states"
@@ -20,6 +20,18 @@ export default {
     filter:{
       type:String,
       required:true
+    },
+    troggleTabFilter:{
+      type:Function,
+      required:true
+    },
+    clearCompleted:{
+      type:Function,
+      required:true
+    },
+    leftItemsCount:{
+      type:Number,
+      required:true
     }
   },
   data(){
@@ -28,8 +40,12 @@ export default {
     }
   },
   methods:{
-    clearAllCompleted(){},
-    toggleFilter(state){}
+    clearAllCompleted(){
+      this.clearCompleted()
+    },
+    toggleFilter(state){
+      this.troggleTabFilter(state)
+    }
   }
 }
 </script>
