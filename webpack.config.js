@@ -68,6 +68,7 @@ if (isDev) {
     config.plugins.push(
         new webpack.HotModuleReplacementPlugin(),
         new webpack.NoEmitOnErrorsPlugin() //减少不需要的信息展示
+        //new webpack.
 
     )
     config.module.rules.push(
@@ -90,6 +91,10 @@ if (isDev) {
     )
 }
 else { //生产环境
+    config.entry ={
+        app: path.resolve(__dirname, 'src/index.js'),
+        vendor: ['vue']
+    }
     config.module.rules.push(
         {
             test: /\.scss$/,
@@ -112,23 +117,39 @@ else { //生产环境
         }
     )
     config.plugins.push(
+        new webpack.optimize.CommonsChunkPlugin({
+            name:'vendor'
+        }),
+        new webpack.optimize.CommonsChunkPlugin({
+            name:'runtime'
+        }),
         new ExtractTextPlugin('style.[contentHash:8].css'),
-        new webpack.LoaderOptionsPlugin({  
+        new webpack.LoaderOptionsPlugin({  //将.vue中的css 单独打包成Css文件
             test:/\.vue$/,  
             options: {  
                 vue: {  
                      loaders: {  
                         css: ExtractTextPlugin.extract({  
-                        fallback:'vue-style-loader',   
-                        use:'css-loader',  
-                        publicPath:"../"  
-                      }),  
+                            fallback:'vue-style-loader',   
+                            use:'css-loader',  
+                            publicPath:"../"  
+                        }),  
+                        scss: ExtractTextPlugin.extract({  
+                            fallback:'vue-style-loader',   
+                            use:[
+                                'css-loader',
+                                'postcss-loader',
+                                'sass-loader'
+                            ],                              
+                            publicPath:"../"  
+                        }) 
                     }  
                 }  
             }  
         })  
     )
     config.output.filename = '[name]-[chunkhash:8].js'
+    
 }
 
 module.exports = config
