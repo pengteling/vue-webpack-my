@@ -1,12 +1,12 @@
 <template>
   <div id="app">
-    <Header></Header>
+    <Header id="test"></Header>
     <Todo></Todo>
     <Footer></Footer>
   </div>
 </template>
 <script>
-import Header from './todo/header.vue'
+import Header from './todo/header.jsx'
 import Footer from './todo/footer.jsx'
 import Todo from './todo/todo.vue'
 export default{  
