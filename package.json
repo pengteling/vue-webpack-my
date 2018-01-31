@@ -28,12 +28,14 @@
     "style-loader": "^0.19.1",
     "url-loader": "^0.6.2",
     "vue": "^2.5.13",
-    "vue-loader": "^13.7.0",
+    "vue-loader": "^14.0.1",
     "vue-template-compiler": "^2.5.13",
     "webpack": "^3.10.0",
     "webpack-dev-server": "^2.11.1"
   },
   "dependencies": {
-    "vue-aplayer": "^1.0.3"
+    "vue-aplayer": "^1.0.3",
+    "vue-aplayer-plugin": "^1.2.0",
+    "vue-video-player": "^5.0.1"
   }
 }

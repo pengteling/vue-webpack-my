@@ -11,6 +11,13 @@ const config = {
         filename: '[name].js',
         path: path.resolve(__dirname, 'dist')
     },
+    // resolve:{
+    //     extensions: ['*', '.js', '.jsx'],
+    //     alias:{
+    //         'vue':'vue/dist/vue.common.js'
+    //     }
+    // },
+    //resolve: { alias: { vue: 'vue/dist/vue.common.js' } },
     module: {
         rules: [
             {
@@ -21,17 +28,17 @@ const config = {
                 test: /\.jsx$/,
                 loader: 'babel-loader'
             },
-            // {
-            //     test: /\.css$/,
-            //     // loader: 'css-loader'
-            //     use:[
-            //         'style-loader',
-            //         'css-loader'
-            //     ]
-            // },
+            {
+                test: /\.css$/,
+                // loader: 'css-loader'
+                use:[
+                    'style-loader',
+                    'css-loader'
+                ]
+            },
 
             {
-                test: /\.(jpg|gif|jpeg|png|svg)$/,
+                test: /\.(jpg|gif|jpeg|png|svg|eot)$/,
                 use: [
                     {
                         loader: 'url-loader',

@@ -1,15 +1,15 @@
 <template>
   <div id="app">   
-    <aplayer></aplayer>
+    <Video></Video>
   </div>
 </template>
 <script>
 
-import Aplayer from "./Aplayer.vue"
+import Video from './Video.vue'
 
 export default {
   components: {    
-    Aplayer
+    Video
   }
 };
 </script>
