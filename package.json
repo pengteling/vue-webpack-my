@@ -36,6 +36,7 @@
   "dependencies": {
     "vue-aplayer": "^1.0.3",
     "vue-aplayer-plugin": "^1.2.0",
+    "vue-simple-player": "^1.0.1",
     "vue-video-player": "^5.0.1"
   }
 }
