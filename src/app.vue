@@ -30,7 +30,10 @@ export default {
   }
 };
 </script>
-<style>
+<style lang="scss" scoped>
+#test{
+  border:0
+}
 #app {
   position: absolute;
   left: 0;

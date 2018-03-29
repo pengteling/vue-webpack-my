@@ -22,7 +22,10 @@ const config = {
         rules: [
             {
                 test: /\.vue$/,
-                loader: 'vue-loader'
+                loader: 'vue-loader',
+                options:{
+                    extractCSS:true
+                }
             },
             {
                 test: /\.jsx$/,
@@ -130,30 +133,31 @@ else { //生产环境
         new webpack.optimize.CommonsChunkPlugin({
             name:'runtime'
         }),
-        new ExtractTextPlugin('style.[contentHash:8].css'),
-        new webpack.LoaderOptionsPlugin({  //将.vue中的css 单独打包成Css文件
-            test:/\.vue$/,  
-            options: {  
-                vue: {  
-                     loaders: {  
-                        css: ExtractTextPlugin.extract({  
-                            fallback:'vue-style-loader',   
-                            use:'css-loader',  
-                            publicPath:"../"  
-                        }),  
-                        scss: ExtractTextPlugin.extract({  
-                            fallback:'vue-style-loader',   
-                            use:[
-                                'css-loader',
-                                'postcss-loader',
-                                'sass-loader'
-                            ],                              
-                            publicPath:"../"  
-                        }) 
-                    }  
-                }  
-            }  
-        })  
+        
+        // new webpack.LoaderOptionsPlugin({  //将.vue中的css 单独打包成Css文件
+        //     test:/\.vue$/,  
+        //     options: {  
+        //         vue: {  
+        //              loaders: {  
+        //                 css: ExtractTextPlugin.extract({  
+        //                     fallback:'vue-style-loader',   
+        //                     use:'css-loader',  
+        //                     publicPath:"../"  
+        //                 }),  
+        //                 scss: ExtractTextPlugin.extract({  
+        //                     fallback:'vue-style-loader',   
+        //                     use:[
+        //                         'css-loader',
+        //                         'postcss-loader',
+        //                         'sass-loader'
+        //                     ],                              
+        //                     publicPath:"../"  
+        //                 }) 
+        //             }  
+        //         }  
+        //     }  
+        // }),  
+        new ExtractTextPlugin('style.[contentHash:8].css')
     )
     config.output.filename = '[name]-[chunkhash:8].js'
     
