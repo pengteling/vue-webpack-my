@@ -1,6 +1,7 @@
 const path = require('path')
 const webpack = require('webpack')
 const HtmlWebpackPlugin = require('html-webpack-plugin')
+const ExtractTextPlugin = require('extract-text-webpack-plugin')
 const isDev = process.env.NODE_ENV == "development"
 const config = {
     target: 'web',
@@ -13,7 +14,10 @@ const config = {
         rules:[
             {
                 test: /\.vue$/,
-                loader: 'vue-loader'
+                loader: 'vue-loader',
+                options:{
+                    extractCSS:true
+                }
             },
             {
                 test: /\.jsx$/,
@@ -28,20 +32,37 @@ const config = {
                 ]
             },
             {
+                // test: /\.scss$/,
+                // // loader: 'css-loader'
+                // use:[
+                //     'style-loader',
+                //     'css-loader',
+                //     {
+                //         loader:'postcss-loader',
+                //         options:{
+                //             sourceMap: true
+                //         }
+                //     }
+                //     ,
+                //     'sass-loader'
+                // ]
                 test: /\.scss$/,
-                // loader: 'css-loader'
-                use:[
-                    'style-loader',
+            // loader: 'css-loader'
+            use: ExtractTextPlugin.extract({
+                fallback: 'style-loader',
+                use: [
+                    //'style-loader',
                     'css-loader',
                     {
-                        loader:'postcss-loader',
-                        options:{
+                        loader: 'postcss-loader',
+                        options: {
                             sourceMap: true
                         }
                     }
                     ,
                     'sass-loader'
                 ]
+            })
             },
             {
                 test: /\.(jpg|gif|jpeg|png|svg)$/,
@@ -63,7 +84,8 @@ const config = {
                 NODE_ENV: isDev?'"development"' : '"production"'
             }
         }),
-        new HtmlWebpackPlugin()
+        new HtmlWebpackPlugin(),
+        new ExtractTextPlugin('style.css')
     ]
 }
 if(isDev){

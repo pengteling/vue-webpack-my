@@ -7,8 +7,8 @@
       @keyup.enter="addTodo"
     >
     <!-- <Item :todo="todo"></Item> -->
-    <Item :todo="todo" v-for="todo in todosView" :key="todo.id" :deleteTodoItem="deleteTodoItem"></Item>
-    <Tabs :filter="filter" :troggleTabFilter ="troggleTabFilter" :clearCompleted ="clearCompleted" :leftItemsCount = "leftItemsCount" ></Tabs>
+    <Item :todo="todo" v-for="todo in todosView" :key="todo.id" :deleteTodoItem="deleteTodoItem" />
+    <Tabs :filter="filter" :troggleTabFilter ="troggleTabFilter" :clearCompleted ="clearCompleted" :leftItemsCount = "leftItemsCount" />
   </section>
 </template>
 
@@ -81,7 +81,7 @@ export default {
   width: 640px;
   margin: 0 auto;
   box-shadow: 0 0 5px rgba(#666, 0.1);
-  input {
+  input.add-input {
     width: 100%;
     font-size: 24px;
     line-height: 1.4em;
